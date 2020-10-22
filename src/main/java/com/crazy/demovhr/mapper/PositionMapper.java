@@ -2,6 +2,7 @@ package com.crazy.demovhr.mapper;
 
 import com.crazy.demovhr.model.Position;
 import com.crazy.demovhr.model.RespBean;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -21,4 +22,5 @@ public interface PositionMapper {
     List<Position> getAllPositions();
 
 
+    Integer deletePositionsByIds(@Param("ids") Integer[] ids);
 }
