@@ -21,4 +21,7 @@ public interface MenuMapper {
 
 
     List<Menu> getAllMenusWithRole();
+
+    List<Menu> getAllMenus();
+
 }
