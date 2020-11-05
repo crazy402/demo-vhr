@@ -1,11 +1,14 @@
 package com.crazy.demovhr.service;
 
 import com.crazy.demovhr.mapper.MenuMapper;
+import com.crazy.demovhr.mapper.MenuRoleMapper;
 import com.crazy.demovhr.model.Hr;
 import com.crazy.demovhr.model.Menu;
+import com.crazy.demovhr.model.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -20,6 +23,9 @@ import java.util.List;
 public class MenuService {
     @Autowired
     MenuMapper menuMapper;
+
+    @Autowired
+    MenuRoleMapper menuRoleMapper;
 
     public List<Menu> getMenuByHrId() {
         return menuMapper.getMenuByHrId(((Hr)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
@@ -36,4 +42,18 @@ public class MenuService {
     public List<Menu> getAllMenus() {
         return menuMapper.getAllMenus();
     }
+
+    public List<Integer> getMidsByRid(Integer rid) {
+        return menuMapper.getMidsByRid(rid);
+    }
+
+    @Transactional
+    public boolean updateMenuRole(Integer rid, Integer[] mids) {
+        //先删除 再添加
+        menuRoleMapper.deleteById(rid);
+        Integer result = menuRoleMapper.insertRecord(rid,mids);
+
+        return result == mids.length;
+    }
+
 }

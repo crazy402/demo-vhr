@@ -1,5 +1,15 @@
 package com.crazy.demovhr.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+/**
+ * @author crazy402
+ */
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class EmpSalary {
     private Integer id;
 
@@ -7,27 +17,4 @@ public class EmpSalary {
 
     private Integer sid;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getEid() {
-        return eid;
-    }
-
-    public void setEid(Integer eid) {
-        this.eid = eid;
-    }
-
-    public Integer getSid() {
-        return sid;
-    }
-
-    public void setSid(Integer sid) {
-        this.sid = sid;
-    }
 }

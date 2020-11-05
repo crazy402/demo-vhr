@@ -9,16 +9,26 @@
   <sql id="Base_Column_List" >
     id, mid, rid
   </sql>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from menu_role
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <delete id="deleteById">
+    delete from menu_role where rid = #{rid}
+  </delete>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from menu_role
     where id = #{id,jdbcType=INTEGER}
   </delete>
+  <insert id="insertRecord">
+    insert into menu_role (mid, rid) VALUES
+    <foreach collection="mids" separator="," item="mid">
+      (#{mid},#{rid})
+    </foreach>
+  </insert>
   <insert id="insert" parameterType="com.crazy.demovhr.model.MenuRole" >
     insert into menu_role (id, mid, rid)
     values (#{id,jdbcType=INTEGER}, #{mid,jdbcType=INTEGER}, #{rid,jdbcType=INTEGER})

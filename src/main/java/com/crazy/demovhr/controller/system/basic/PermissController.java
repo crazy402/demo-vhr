@@ -1,13 +1,12 @@
 package com.crazy.demovhr.controller.system.basic;
 
 import com.crazy.demovhr.model.Menu;
+import com.crazy.demovhr.model.RespBean;
 import com.crazy.demovhr.model.Role;
 import com.crazy.demovhr.service.MenuService;
 import com.crazy.demovhr.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -36,4 +35,35 @@ public class PermissController {
     public List<Menu> getAllMenus() {
         return menuService.getAllMenus();
     }
+
+    @GetMapping("/mids/{rid}")
+    public List<Integer> getMidsByRid(@PathVariable Integer rid) {
+        return menuService.getMidsByRid(rid);
+    }
+
+    @PutMapping("/")
+    public RespBean updateMenuRole(Integer rid, Integer[] mids) {
+        if (menuService.updateMenuRole(rid,mids)) {
+            return RespBean.ok("更新成功");
+        }
+        return RespBean.error("更新失败!");
+
+    }
+
+    @PostMapping("/role")
+    public RespBean addRole(@RequestBody Role role) {
+        if (roleService.addRole(role) == 1) {
+            return RespBean.ok("添加成功");
+        }
+        return RespBean.error("添加失败！");
+
+    }
+
+    @DeleteMapping("/role/{rid}")
+    public RespBean deleteById(@PathVariable Integer rid) {
+        if (roleService.deleteById(rid) == 1) {
+            return RespBean.ok("删除成功");
+        }
+        return RespBean.error("删除失败！");
+     }
 }

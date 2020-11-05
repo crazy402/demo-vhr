@@ -24,4 +24,15 @@ public class RoleService {
         return roleMapper.getAllRoles();
     }
 
+    public Integer addRole(Role role) {
+        //由于权限设置 所以名字带有前缀 需要判断再添加
+        if (!role.getName().startsWith("ROLE_")) {
+            role.setName("ROLE_" + role.getName());
+        }
+        return roleMapper.insert(role);
+    }
+
+    public Integer deleteById(Integer rid) {
+        return roleMapper.deleteByPrimaryKey(rid);
+    }
 }
