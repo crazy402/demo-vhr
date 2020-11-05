@@ -29,6 +29,7 @@
       (#{mid},#{rid})
     </foreach>
   </insert>
+
   <insert id="insert" parameterType="com.crazy.demovhr.model.MenuRole" >
     insert into menu_role (id, mid, rid)
     values (#{id,jdbcType=INTEGER}, #{mid,jdbcType=INTEGER}, #{rid,jdbcType=INTEGER})
