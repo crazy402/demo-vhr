@@ -13,6 +13,6 @@ import java.util.List;
  **/
 @Data
 public class RespPageBean {
-    private Long tatal;
+    private Long total;
     private List<?> data;
 }

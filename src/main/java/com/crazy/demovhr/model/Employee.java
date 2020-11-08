@@ -1,5 +1,6 @@
 package com.crazy.demovhr.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.util.Date;
@@ -15,6 +16,7 @@ public class Employee {
 
     private String gender;
 
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
     private Date birthday;
 
     private String idCard;
@@ -50,6 +52,7 @@ public class Employee {
     private String school;
 
     //开始时间
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
     private Date beginDate;
 
     //在职状态
@@ -57,14 +60,19 @@ public class Employee {
 
     private String workId;
 
+
     private Double contractTerm;
 
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
     private Date conversionTime;
 
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
     private Date notWorkDate;
 
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
     private Date beginContract;
 
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
     private Date endContract;
 
     private Integer workAge;
